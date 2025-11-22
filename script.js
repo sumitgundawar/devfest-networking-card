@@ -123,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update QR code
     qr.clear();
+    qr._htOption.width = 256; // Set QR code width
+    qr._htOption.height = 256; // Set QR code height
     qr.makeCode(qrPayload);
   }
 
