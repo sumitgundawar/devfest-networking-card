@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const previewRole = document.getElementById("preview-role");
   const previewBio = document.getElementById("preview-bio");
   const previewSkills = document.getElementById("preview-skills");
+  const skillsInput = document.getElementById("skills");
 
   const githubLink = document.getElementById("preview-github");
   const linkedinLink = document.getElementById("preview-linkedin");
@@ -69,9 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
       .map((s) => s.trim())
       .filter(Boolean);
 
-    // Prefill default skills if none are provided
+    // Prefill default skills only when input is empty
     if (skills.length === 0) {
       skills.push("Kotlin", "Firebase", "Flutter");
+    }
+
+    // If user has typed skills, remove the input placeholder to avoid
+    // showing prefill suggestions; restore when cleared.
+    if (skillsInput) {
+      if (data.skills && data.skills.trim().length > 0) {
+        skillsInput.placeholder = "";
+      } else {
+        skillsInput.placeholder = "Kotlin, Firebase, Flutter, Cloud Run";
+      }
     }
 
     if (skills.length > 0) {
