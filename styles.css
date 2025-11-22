@@ -327,6 +327,12 @@ textarea.input-field {
   border-radius: 12px;
 }
 
+.qrcode img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .qr-caption {
   margin: 4px 0 0;
   font-size: 0.7rem;
@@ -380,17 +386,34 @@ textarea.input-field {
 }
 
 @media print {
+  /* Force color printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  @page {
+    margin: 10mm;
+    size: A4;
+  }
+
   body {
-    background: white;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     padding: 0;
+    margin: 0;
   }
 
   .app {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    max-width: none;
+    padding: 20px;
     box-shadow: none;
-    border-radius: 0;
     border: none;
+    border-radius: 0;
   }
 
+  /* Hide form elements */
   .app-header,
   .form-section,
   .hint,
@@ -399,81 +422,126 @@ textarea.input-field {
     display: none !important;
   }
 
-  /* Make the preview card centered and preserved for print */
-  * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .app {
-    background: transparent;
-    max-width: none;
-    padding: 0;
-  }
-
   .preview-section {
     display: block !important;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Center the card on the printed page and keep preview styling */
+  .preview-section h2 {
+    display: none !important;
+  }
+
+  /* Beautiful card design for PDF */
   .card {
-    width: 380px;
-    margin: 28px auto;
-    box-shadow: none;
-    border: none;
-    /* Use a solid background color for reliable printing; gradient is fallback */
-    background-color: #0b1220;
-    background: linear-gradient(circle at top, rgba(51, 65, 85, 0.85), rgba(15, 23, 42, 0.98));
-    color: #f9fafb;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .card-main {
-    padding: 12px;
-  }
-
-  .card-qr {
-    padding: 8px;
-    background-color: rgba(255,255,255,0.02);
-  }
-
-  .qrcode {
-    padding: 8px;
-    width: 200px;
-    height: 200px;
-    display: block;
-    background: #ffffff; /* white QR background for contrast when printing */
-  }
-
-  .preview-skills .skill-pill {
+    width: 400px !important;
+    margin: 40px auto !important;
+    background: linear-gradient(145deg, #334155 0%, #1e293b 50%, #0f172a 100%) !important;
+    border: 2px solid #4f46e5 !important;
+    border-radius: 20px !important;
+    padding: 24px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    color: #f8fafc !important;
     page-break-inside: avoid;
   }
 
-  /* Reduce extra elements and ensure links look clean in print */
+  .card-main {
+    padding: 0 !important;
+  }
+
+  .card-header h2 {
+    color: #f8fafc !important;
+    font-size: 1.4rem !important;
+    margin-bottom: 8px !important;
+    font-weight: 700 !important;
+  }
+
+  .card-header .muted {
+    color: #94a3b8 !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+
+  .bio-preview {
+    color: #e2e8f0 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin: 12px 0 !important;
+  }
+
+  .preview-skills {
+    margin: 16px 0 !important;
+  }
+
+  .preview-skills .label {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+  }
+
+  .preview-skills .skill-pill {
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%) !important;
+    color: white !important;
+    border: 1px solid #6366f1 !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    margin: 2px !important;
+    border-radius: 20px !important;
+  }
+
+  .preview-links {
+    margin: 16px 0 !important;
+  }
+
   .link-pill {
-    border: 1px solid rgba(148, 163, 184, 0.7);
-    background: rgba(255,255,255,0.02);
-    color: inherit;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #64748b !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    margin: 2px !important;
+    border-radius: 15px !important;
+    text-decoration: none !important;
   }
 
-  @page {
-    margin: 16mm;
+  .email-pill {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+    color: white !important;
+    border: 1px solid #047857 !important;
   }
 
-  .preview-section {
-    border: none;
-    background: white;
-    padding: 0;
+  .card-qr {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%) !important;
+    border: 2px dashed #6366f1 !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
   }
 
-  .card {
-    box-shadow: none;
-    border-radius: 0;
-    max-width: 100%;
+  .qrcode {
+    background: white !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    border: 2px solid #e5e7eb !important;
+  }
+
+  .qrcode img {
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+  .qr-caption {
+    color: #9ca3af !important;
+    font-size: 0.75rem !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    font-weight: 500 !important;
+  }
+
+  /* Ensure text is readable */
+  .muted {
+    color: #94a3b8 !important;
   }
 }
