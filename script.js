@@ -69,6 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .map((s) => s.trim())
       .filter(Boolean);
 
+    // Prefill default skills if none are provided
+    if (skills.length === 0) {
+      skills.push("Kotlin", "Firebase", "Flutter");
+    }
+
     if (skills.length > 0) {
       labelSpan.classList.remove("muted");
       skills.forEach((skill) => {
