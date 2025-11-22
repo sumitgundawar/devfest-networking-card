@@ -425,7 +425,10 @@ textarea.input-field {
     margin: 28px auto;
     box-shadow: none;
     border: none;
+    /* Use a solid background color for reliable printing; gradient is fallback */
+    background-color: #0b1220;
     background: linear-gradient(circle at top, rgba(51, 65, 85, 0.85), rgba(15, 23, 42, 0.98));
+    color: #f9fafb;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -436,6 +439,7 @@ textarea.input-field {
 
   .card-qr {
     padding: 8px;
+    background-color: rgba(255,255,255,0.02);
   }
 
   .qrcode {
@@ -443,6 +447,7 @@ textarea.input-field {
     width: 200px;
     height: 200px;
     display: block;
+    background: #ffffff; /* white QR background for contrast when printing */
   }
 
   .preview-skills .skill-pill {
@@ -452,7 +457,7 @@ textarea.input-field {
   /* Reduce extra elements and ensure links look clean in print */
   .link-pill {
     border: 1px solid rgba(148, 163, 184, 0.7);
-    background: transparent;
+    background: rgba(255,255,255,0.02);
     color: inherit;
   }
 
