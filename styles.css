@@ -399,6 +399,67 @@ textarea.input-field {
     display: none !important;
   }
 
+  /* Make the preview card centered and preserved for print */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .app {
+    background: transparent;
+    max-width: none;
+    padding: 0;
+  }
+
+  .preview-section {
+    display: block !important;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Center the card on the printed page and keep preview styling */
+  .card {
+    width: 380px;
+    margin: 28px auto;
+    box-shadow: none;
+    border: none;
+    background: linear-gradient(circle at top, rgba(51, 65, 85, 0.85), rgba(15, 23, 42, 0.98));
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card-main {
+    padding: 12px;
+  }
+
+  .card-qr {
+    padding: 8px;
+  }
+
+  .qrcode {
+    padding: 8px;
+    width: 200px;
+    height: 200px;
+    display: block;
+  }
+
+  .preview-skills .skill-pill {
+    page-break-inside: avoid;
+  }
+
+  /* Reduce extra elements and ensure links look clean in print */
+  .link-pill {
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: transparent;
+    color: inherit;
+  }
+
+  @page {
+    margin: 16mm;
+  }
+
   .preview-section {
     border: none;
     background: white;
