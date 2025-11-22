@@ -64,6 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const labelSpan = skillsContainer.querySelector(".label");
     const previousPills = skillsContainer.querySelectorAll(".skill-pill");
     previousPills.forEach((pill) => pill.remove());
+    // Remove any static muted element (old placeholder) that might remain
+    const staticMuted = skillsContainer.querySelector(".muted");
+    if (staticMuted && staticMuted !== labelSpan) {
+      staticMuted.remove();
+    }
 
     const skills = data.skills
       .split(",")
