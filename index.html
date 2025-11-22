@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DevFest Networking Card Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="title-group">
+        <h1>DevFest Networking Card</h1>
+        <p>Create a sharable profile with a QR code – all in your browser.</p>
+      </div>
+      <span class="badge">Made with ❤ at DevFest</span>
+    </header>
+
+    <main class="app-main">
+      <!-- Form -->
+      <section class="form-section">
+        <h2>Your Details</h2>
+        <form id="profile-form" autocomplete="on">
+          <div class="field">
+            <label for="name">Full Name<span class="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              class="input-field"
+              data-sync="name"
+              placeholder="Ada Lovelace"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="role">Role / Tagline</label>
+            <input
+              type="text"
+              id="role"
+              class="input-field"
+              data-sync="role"
+              placeholder="Android Dev · Cloud Enthusiast"
+            />
+          </div>
+
+          <div class="field">
+            <label for="bio">Short Bio</label>
+            <textarea
+              id="bio"
+              class="input-field"
+              data-sync="bio"
+              rows="3"
+              placeholder="I love building products with Kotlin, Firebase and a lot of coffee."
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="skills">Skills (comma separated)</label>
+            <input
+              type="text"
+              id="skills"
+              class="input-field"
+              data-sync="skills"
+              placeholder="Kotlin, Firebase, Flutter, Cloud Run"
+            />
+          </div>
+
+          <div class="field two-col">
+            <div>
+              <label for="github">GitHub</label>
+              <input
+                type="url"
+                id="github"
+                class="input-field"
+                data-sync="github"
+                placeholder="https://github.com/yourname"
+              />
+            </div>
+            <div>
+              <label for="linkedin">LinkedIn</label>
+              <input
+                type="url"
+                id="linkedin"
+                class="input-field"
+                data-sync="linkedin"
+                placeholder="https://linkedin.com/in/yourname"
+              />
+            </div>
+          </div>
+
+          <div class="field two-col">
+            <div>
+              <label for="website">Website / Portfolio</label>
+              <input
+                type="url"
+                id="website"
+                class="input-field"
+                data-sync="website"
+                placeholder="https://your-portfolio.dev"
+              />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="input-field"
+                data-sync="email"
+                placeholder="you@example.com"
+              />
+            </div>
+          </div>
+
+          <button type="button" id="reset-btn" class="secondary-btn">
+            Reset form
+          </button>
+        </form>
+
+        <p class="hint">
+          The card updates live as you type. Nothing is uploaded – it’s all in
+          your browser.
+        </p>
+      </section>
+
+      <!-- Preview -->
+      <section class="preview-section">
+        <h2>Preview / Print</h2>
+        <div class="card" id="card">
+          <div class="card-main">
+            <div class="card-header">
+              <h2 id="preview-name">Your Name</h2>
+              <p id="preview-role" class="muted">
+                Your role or tagline appears here
+              </p>
+            </div>
+
+            <p id="preview-bio" class="bio-preview">
+              A short one-line bio will appear here once you start typing.
+            </p>
+
+            <div class="preview-skills" id="preview-skills">
+              <span class="label">Skills:</span>
+              <span class="muted">Kotlin · Firebase · Flutter</span>
+            </div>
+
+            <div class="preview-links">
+              <a
+                id="preview-github"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden link-pill"
+              >
+                GitHub
+              </a>
+              <a
+                id="preview-linkedin"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden link-pill"
+              >
+                LinkedIn
+              </a>
+              <a
+                id="preview-website"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden link-pill"
+              >
+                Website
+              </a>
+              <span id="preview-email" class="hidden link-pill email-pill"></span>
+            </div>
+          </div>
+
+          <div class="card-qr">
+            <div id="qrcode" class="qrcode"></div>
+            <p class="qr-caption">Scan to save my details</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="print-btn" class="primary-btn">
+            Print / Save as PDF
+          </button>
+        </div>
+
+        <p class="hint">
+          On desktop: click <strong>Print / Save as PDF</strong> → choose
+          <em>Save as PDF</em> or a physical printer.
+        </p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      Built with HTML, CSS &amp; JavaScript · Host this on GitHub Pages and share
+      the link with other attendees.
+    </footer>
+  </div>
+
+  <!-- QRCode library (client-side only, no backend) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
